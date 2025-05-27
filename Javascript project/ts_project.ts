@@ -1,4 +1,4 @@
-/*
+
 let item1: number = 29.99; 
 let item2: number = 49.99;
 let item3: number = 19.99;
@@ -27,9 +27,9 @@ console.log("The total cost of the shopping cart is " + shoppingCartCostAfterTax
 
 
 
-*/
 
-/*
+
+
 //Exercise 1: Guessing game
 
 const randomNumber: number = Math.floor(Math.random()*100);
@@ -79,11 +79,11 @@ if (numberAttemps === 3){
 }
 
 
-*/
+
 
 //Exercise 2: Temperature converter
 
-/*
+
 
 let userInputMenu: string = "null";
 
@@ -340,6 +340,51 @@ class Book {
 const book1 = new Book ('Harry Potter', 'JK Rowling', 1994);
 console.log(book1.print());
 
+
+
+class Videogame {
+    title: string;
+    developer: string;
+    availableCopies: number;
+    price: number;
+    copiesSold: number;
+
+    static availableGames:[];
+    static soldOutGames:[];
+    static totalSold:0;
+
+    constructor (title:string, developer:string, availableCopies:number ,price: number, copiesSold:number){
+        this.title = title;
+        this.developer = developer;
+        this.availableCopies=availableCopies;
+        this.price = price;
+        this.copiesSold= copiesSold;
+
+        if (this.availableCopies>0){
+            
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+Define a class VideoGame with the following attributes:
+Instance:
+title: title of the game.
+developer: name of the development company or developer.
+availableCopies: number of copies available of this game.
+price: price of the game.
+copiesSold: number of copies already sold.
+Static:
+availableGames: an array to store all games that have more than 0 availableCopies.
+soldOutGames: an array to store all games that have 0 availableCopies.
+totalSold: total sum of the copies already sold.
 
 
 
