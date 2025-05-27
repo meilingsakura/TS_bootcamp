@@ -340,7 +340,13 @@ class Book {
 const book1 = new Book ('Harry Potter', 'JK Rowling', 1994);
 console.log(book1.print());
 
-
+Interface IVideogame {
+    title: string;
+    developer: string;
+    availableCopies: number;
+    price: number;
+    copiesSold: number;
+}
 
 class Videogame {
     title: string;
@@ -348,49 +354,52 @@ class Videogame {
     availableCopies: number;
     price: number;
     copiesSold: number;
+    
+   
+    static availableGames:Videogame[];
+    static soldOutGames:Videogame[];
+    static totalSold = 0;
 
-    static availableGames:[];
-    static soldOutGames:[];
-    static totalSold:0;
-
-    constructor (title:string, developer:string, availableCopies:number ,price: number, copiesSold:number){
+    constructor (title:string, developer:string, availableCopies:number, price:number, copiesSold:number){
         this.title = title;
         this.developer = developer;
-        this.availableCopies=availableCopies;
+        this.availableCopies = availableCopies;
         this.price = price;
-        this.copiesSold= copiesSold;
+        this.copiesSold = copiesSold;
 
+        Videogame.totalSold += copiesSold;
         if (this.availableCopies>0){
-            
+            Videogame.availableGames.push(this);
         }
-    }
+        else Videogame.soldOutGames.push(this);
+               
+        }
+
+        isAvailable(): boolean {
+         if (this.availableCopies > 0){
+            return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        sell(): number{
+            this.availableCopies -= 1;
+            this.copiesSold += 1;
+            Videogame.totalSold += 1;
+            console.log('the game sold was ' + this.title);
+            if (this.availableCopies===0){
+                Videogame.availableGames = Videogame.availableGames.filter()
+                Videogame.soldOutGames.push(this);
+
+            }
+            return this.price;
+        }
 
 
-}
-
-
-
-
-
-
-
-Define a class VideoGame with the following attributes:
-Instance:
-title: title of the game.
-developer: name of the development company or developer.
-availableCopies: number of copies available of this game.
-price: price of the game.
-copiesSold: number of copies already sold.
-Static:
-availableGames: an array to store all games that have more than 0 availableCopies.
-soldOutGames: an array to store all games that have 0 availableCopies.
-totalSold: total sum of the copies already sold.
-
-
-
-
-
-
+         
+    
 
 
 
@@ -399,7 +408,7 @@ totalSold: total sum of the copies already sold.
 
 
 //
-
+/*
 class Agenda {
     private nombres: string[] = [];
 
@@ -415,4 +424,4 @@ class Agenda {
     mostrarNombres(): void {
         console.log("Lista de nombres en la agenda:");
         console.log(this.nombres.join(", "));
-    }
+    
